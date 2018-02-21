@@ -1,0 +1,30 @@
+{
+  "name": "olxclone",
+  "version": "1.0.0",
+  "description": "backend olx clone Api",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robsonmvieira/olxbackendclone.git"
+  },
+  "keywords": [
+    "api",
+    "backend",
+    "nodejs",
+    "javascript",
+    "olx"
+  ],
+  "author": "Robson Maia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robsonmvieira/olxbackendclone/issues"
+  },
+  "homepage": "https://github.com/robsonmvieira/olxbackendclone#readme",
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}
