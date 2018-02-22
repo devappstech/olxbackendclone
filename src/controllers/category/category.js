@@ -1,6 +1,6 @@
 const Category = require('../../models/category/category')
 module.exports = {
-  create: async( req, res) => {
+  create: ( req, res) => {
     
   },
   index: async( req, res) => {
