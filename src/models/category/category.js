@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 const CategorySchema = new Schema({
   title: {
     type: String,
-    required: [true, 'Title is required']
+    min: 3,
+    required: [true, 'title is required']
   },
   ads:[{
     type: Schema.Types.ObjectId,

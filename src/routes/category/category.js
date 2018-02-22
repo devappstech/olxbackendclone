@@ -8,4 +8,8 @@ router.route('/')
   .get(Category.index)
   .post(Category.create)
 
+router.route('/:id')
+  .get(Category.one)
+  .put(Category.update)
+  .delete(Category.remove)
 module.exports = router
