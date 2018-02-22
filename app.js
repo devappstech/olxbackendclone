@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true}))
 app.use(cors())
 
 //routers 
-const category = require('./src/models/category/category')
+const category = require('./src/routes/category/category')
 
 
 app.use('/categories', category)

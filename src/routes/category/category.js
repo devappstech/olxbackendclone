@@ -4,7 +4,8 @@ const router = require('express-promise-router')()
 
 const Category = require('../../controllers/category/category')
 
-router.router('/')
+router.route('/')
   .get(Category.index)
   .post(Category.create)
 
+module.exports = router
