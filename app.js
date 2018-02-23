@@ -18,9 +18,12 @@ app.use(cors())
 //routers 
 const category = require('./src/routes/category/category')
 const ad = require('./src/routes/ad/ad')
+const seller = require('./src/routes/seller/seller')
 
 app.use('/categories', category)
 app.use('/ad', ad)
+app.use('/sign', seller)
+
 // server
 app.listen(port, () => {
   console.log(`Server stand up in port http://localhost:${port}`)
