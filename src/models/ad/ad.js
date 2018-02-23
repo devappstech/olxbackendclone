@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const AdSchema = new Schema({
+const adSchema = new Schema({
   title: {
     type: String,
     min: 5,
@@ -23,11 +23,15 @@ const AdSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'cateory'
   }],
+  seller: {
+    seller: seller._id,
+    required: [true, 'Seller is required']
+  },
   localization: {
     type: String,
   }
 })
 
-const adModel = mongoose.model('ad', AdSchema)
+const adModel = mongoose.model('ad', adSchema)
 
 module.exports = adModel

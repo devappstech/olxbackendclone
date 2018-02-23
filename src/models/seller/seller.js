@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const SellerSchema =  new Schema({
+const sellerSchema =  new Schema({
   fullName: {
     type: String,
     min: 3,
@@ -31,9 +31,13 @@ const SellerSchema =  new Schema({
     max: 12,
     required: [true, 'Confirm Password is required'],
     select: false
-  }
+  },
+  ads:[{
+    type: Schema.Types.ObjectId,
+    ref: 'ad'
+  }]
 })
 
-const sellerModel = mongoose.model('seller', SellerSchema)
+const sellerModel = mongoose.model('seller', sellerSchema)
 
 module.exports = sellerModel
