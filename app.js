@@ -5,9 +5,12 @@ const app = express()
 const morgan = require('morgan')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const port = 8000
+//const port = process.env.port
 
+const port = 8000
 const mongoose = require('./src/database/database')
+
+
 // middleware
 app.use(morgan('dev'))
 app.use(bodyParser.json())
