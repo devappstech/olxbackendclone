@@ -2,11 +2,11 @@ const express = require('express')
 const router = require('express-promise-router')()
 const seller = require('../../controllers/seller/seller')
 
-router.route('/in:id')
-  .post(seller.sigin)
+router.route('/signin')
+  .post(seller.signin)
 
-router.route('/up:id')
-  .post(seller.sigup)
+router.route('/signup')
+  .post(seller.signup)
 
 
 module.exports = router

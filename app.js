@@ -1,5 +1,6 @@
 const express = require('express')
 
+const env = require('../olxclone/.env')
 const app = express()
 
 const morgan = require('morgan')
@@ -7,7 +8,8 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 //const port = process.env.port
 
-const port = 8000
+const port = env.port
+
 const mongoose = require('./src/database/database')
 
 
@@ -25,7 +27,7 @@ const seller = require('./src/routes/seller/seller')
 
 app.use('/categories', category)
 app.use('/ad', ad)
-app.use('/sign', seller)
+app.use('/sellers', seller)
 
 // server
 app.listen(port, () => {

@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "backend olx clone Api",
   "main": "app.js",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/robsonmvieira/olxbackendclone.git"
@@ -28,6 +26,7 @@
     "eslint-plugin-import": "^2.8.0"
   },
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
