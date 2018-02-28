@@ -10,6 +10,11 @@ module.exports = {
   index: async (req, res) => {
     const result = await Ad.find({})
     res.status(200).json(result)
+  },
+  remove: async (req, res) => {
+    const { id } = req.params
+    const result = await Ad.findByIdAndRemove(id)
+    res.status(200).json({ message: true })
   }
 }
 

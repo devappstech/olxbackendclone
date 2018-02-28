@@ -7,5 +7,8 @@ router.route('/')
   .get(ad.index)
   .post(ad.create)
 
+router.route('/:id')
+  .delete(ad.remove)
+  
 module.exports = router
 
