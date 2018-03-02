@@ -42,19 +42,20 @@ const sellerSchema =  new Schema({
 
 
 sellerSchema.pre('save', async function(next){
-    console.log('fui chamado..')
-    console.log(this.password, this.confirmPassword)
-    this.password === this.confirmPassword ? next() : next(new Error('your password doesn\'t match'))
+  if(this.isNew)
+    this.password === this.confirmPassword ? next() : next(new Error('your password doesn\'t match'))  
 });
 
 sellerSchema.pre('save', async function(next){
   try {
-    const salt = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(this.password, salt)
-    const hashedConfirmPassword = await bcrypt.hash(this.confirmPassword,salt)
-    this.password = hashedPassword
-    this.confirmPassword = hashedPassword
-    next()
+    if(this.isNew){
+      const salt = await bcrypt.genSalt(10)
+      const hashedPassword = await bcrypt.hash(this.password, salt)
+      const hashedConfirmPassword = await bcrypt.hash(this.confirmPassword,salt)
+      this.password = hashedPassword
+      this.confirmPassword = hashedPassword
+      next()
+    }
   } catch (error) {
     next(error)
   }

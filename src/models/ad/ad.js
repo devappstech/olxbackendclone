@@ -21,14 +21,15 @@ const adSchema = new Schema({
   description: {
     type: String
   },
-  category:[{
+  categories:[{
     type: Schema.Types.ObjectId,
-    ref: 'cateory'
+    ref: 'cateory',
+    required: [true, 'catory is required']
   }],
   seller: [{
     type: Schema.Types.ObjectId,
     ref: 'seller',
-    // require: true,
+    require: [true, 'please. inform one seller'],
     max: 1
   }],
   localization: {
