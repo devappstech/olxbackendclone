@@ -12,8 +12,8 @@ const sellerSchema =  new Schema({
   email: {
     type: String,
     min: 3,
-    unique: [true, 'this is email already used. Please choice other.'],
-    required: [true, 'The email is required']
+    required: [true, 'The email is required'],
+    lowercase: true
   },
   phone: {
     type: String,

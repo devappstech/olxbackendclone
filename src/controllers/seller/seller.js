@@ -1,18 +1,35 @@
 const Seller = require('../../models/seller/seller')
 const Ad = require('../../models/ad/ad')
 const Category = require('../../models/category/category')
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+
+
+const generateToken = (params = []) => {
+  return jwt.sign(params, )
+}
 
 module.exports = {
   signin: async (req, res) => {
-    const { id } = req.params
-    const result = await Seller.findById(id)
-    req.status(200).json(result)
+    const { email, password } = req.body
+    const result = await Seller.findOne({ email }).select("+password")
+    if(!result)
+      res.status(400).json({ message: "user not found" })
+    
+    if(!await bcrypt.compare(password, result.password)){
+      return res.status(401).json({ error: "user or password incorrect" })
+    }
+    result.password = undefined
+    res.status(200).json(result)
   },
   signup: async (req, res) => {
-    const { confirmPassword, password, phone } = req.body
-    const newSeller = new Seller(req.body)
-    const result = await newSeller.save()
-    console.log(password)
+    const { email } = req.body
+    if(await Seller.findOne({ email })){
+      res.status(400).json( { err: 'email already exist' })
+    }
+    const result = await Seller.create(req.body)
+    result.password = undefined
+    result.confirmPassword = undefined
     res.status(200).json(result)
   },
   index: async (req, res) => {
