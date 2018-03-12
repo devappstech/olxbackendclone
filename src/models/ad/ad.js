@@ -21,6 +21,9 @@ const adSchema = new Schema({
   description: {
     type: String
   },
+  images: {
+    type: String
+  },
   categories:[{
     type: Schema.Types.ObjectId,
     ref: 'cateory',
