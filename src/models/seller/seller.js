@@ -61,6 +61,13 @@ sellerSchema.pre('save', async function(next){
   }
 })
 
+sellerSchema.methods.verifyPasswordLogin = async function(newPassword){
+    try {
+      return await bcrypt.compare(newPassword, this.password)
+    } catch (error) {
+      throw Error(error)
+    }
+}
 
 const sellerModel = mongoose.model('seller', sellerSchema)
 

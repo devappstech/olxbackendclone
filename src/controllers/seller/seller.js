@@ -3,10 +3,10 @@ const Ad = require('../../models/ad/ad')
 const Category = require('../../models/category/category')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const env = require('../../../.env')
 
-
-const generateToken = (params = []) => {
-  return jwt.sign(params, )
+function generateToken(params = {}) {
+  return jwt.sign(params, env.secret,{ expiresIn: 86400, })
 }
 
 module.exports = {
@@ -20,17 +20,17 @@ module.exports = {
       return res.status(401).json({ error: "user or password incorrect" })
     }
     result.password = undefined
-    res.status(200).json(result)
+    res.status(200).json({'result': result,'token :': generateToken({id: result.id})})
   },
   signup: async (req, res) => {
     const { email } = req.body
     if(await Seller.findOne({ email })){
-      res.status(400).json( { err: 'email already exist' })
+      res.status(400).json( { err: 'e-mail already exist' })
     }
     const result = await Seller.create(req.body)
     result.password = undefined
     result.confirmPassword = undefined
-    res.status(200).json(result)
+    res.status(200).json({'result': result, 'token :': generateToken({ id: result.id })})
   },
   index: async (req, res) => {
     const result = await Seller.find({})
@@ -64,7 +64,7 @@ module.exports = {
     res.status(200).json(result.ads)
   },
   oneAd: async (req, res) => {
-
+    
   },
   updateAd: async (req, res) => {
 
